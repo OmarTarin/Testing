@@ -8,7 +8,7 @@
 - simple code maintainability
 - concentration only on the test case
 
-It combines all the features of Moq, AutoFixture and... Divergic.Logging.Xunit 
+It combines all the features of Moq, AutoFixture and... Divergic.Logging.Xunit and extends it with further functions
 
 ## How to use
 
