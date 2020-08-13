@@ -12,5 +12,5 @@ It combines all the features of Moq, AutoFixture and... Divergic.Logging.Xunit
 
 ## How to use
 
-See https://github.com/OmarTarin/Testing/wiki/Use-by-Attribut
+See https://github.com/OmarTarin/Testing/wiki
 
