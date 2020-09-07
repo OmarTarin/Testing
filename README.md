@@ -8,9 +8,9 @@
 - simple code maintainability
 - concentration only on the test case
 
-It combines all the features of Moq, AutoFixture and... Divergic.Logging.Xunit and extends it with further functions
+and make the usability easier.
 
-## How to use
+Another weakness is that IServiceProvider automatically creates mocked objects like Mock<some class>
 
-See https://github.com/OmarTarin/Testing/wiki
+How to use see https://github.com/OmarTarin/Testing/wiki
 
