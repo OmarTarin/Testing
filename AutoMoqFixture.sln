@@ -7,14 +7,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sulution Items", "Sulution 
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 		CHANGELOG.md = CHANGELOG.md
-		.github\workflows\dotnet-core.yml = .github\workflows\dotnet-core.yml
-		.github\workflows\publish.yml = .github\workflows\publish.yml
 		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNet.Testing.AutoMoqFixture", "src\DotNet.Testing.AutoMoqFixture\DotNet.Testing.AutoMoqFixture.csproj", "{33CBCB27-A17E-4877-9616-65A9A9454550}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestImplementation", "src\TestImplementation\TestImplementation.csproj", "{3326E670-70F6-4544-86FB-E99E3385574E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "github", "github", "{26510B65-C481-416C-8CA8-CF6C3345D53D}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\buildandtest.yml = .github\workflows\buildandtest.yml
+		.github\workflows\publishtonuget.yml = .github\workflows\publishtonuget.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{26510B65-C481-416C-8CA8-CF6C3345D53D} = {A19D3A7B-C268-481B-8AB6-BF264FD51B63}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {74308C0F-9277-43F1-B6CD-21465E51342E}
