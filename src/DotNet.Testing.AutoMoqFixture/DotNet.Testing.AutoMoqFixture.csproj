@@ -1,13 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Version>1.0.1</Version>
-    <AssemblyName>AutoMoqFixture</AssemblyName>
-	  <RepositoryUrl>https://github.com/OmarTarin/Testing/wiki</RepositoryUrl>
-	  <Authors>Omar Tarin</Authors>
-	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
-	</PropertyGroup>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<Version>1.0.2</Version>
+		<AssemblyName>AutoMoqFixture</AssemblyName>
+		<RepositoryUrl>https://github.com/OmarTarin/Testing/wiki</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/OmarTarin/Testing/wiki</PackageProjectUrl>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<Authors>Omar Tarin</Authors>
+		<PackageTags>unit-test, test, dotnet core unit test, xunit</PackageTags>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<Company />
+  </PropertyGroup>
 
   <ItemGroup>
     <None Remove=".gitignore" />
