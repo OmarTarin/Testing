@@ -8,6 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sulution Items", "Sulution 
 		.gitignore = .gitignore
 		CHANGELOG.md = CHANGELOG.md
 		.github\workflows\dotnet-core.yml = .github\workflows\dotnet-core.yml
+		.github\workflows\publish.yml = .github\workflows\publish.yml
 		README.md = README.md
 	EndProjectSection
 EndProject
