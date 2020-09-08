@@ -1,5 +1,7 @@
 # UnitTest
 
+![publish to nuget](https://github.com/OmarTarin/Testing/workflows/publish%20to%20nuget/badge.svg?branch=master)
+
 > Helper Utility for testing purposes
 
 ## Benefits
