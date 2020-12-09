@@ -1,4 +1,5 @@
-﻿using AutoFixture;
+﻿using System.Linq;
+using AutoFixture;
 using Microsoft.Extensions.Logging;
 using Xunit.Abstractions;
 

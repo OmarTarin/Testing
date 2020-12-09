@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using AutoFixture;
 using AutoFixture.AutoMoq;
 
@@ -31,6 +32,15 @@ namespace DotNet.Testing.AutoMoqFixture
             {
                 ConfigureMembers = configureMembers
             });
+
+            return this;
+        }
+
+        public FixtureBuilder RecursionDepth(int recursionDepth)
+        {
+            _fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList()
+                .ForEach(b => _fixture.Behaviors.Remove(b));
+            _fixture.Behaviors.Add(new OmitOnRecursionBehavior(recursionDepth));
 
             return this;
         }

@@ -22,6 +22,7 @@ namespace DotNet.Testing.AutoMoqFixture
             var fixture = new FixtureBuilder()
                 .CustomizeAutoMoq(configureMembers)
                 .CustomizeServiceProvider()
+                .RecursionDepth(3)
                 .GetFixture();
 
             fixture.RepeatCount = repeatCount;
