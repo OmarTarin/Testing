@@ -5,24 +5,22 @@ namespace DotNet.Testing.AutoMoqFixture
 {
     public class AutoMoqFixtureAttribute : AutoDataAttribute
     {
-        public AutoMoqFixtureAttribute(int repeatCount = 3, bool configureMembers = false)
-            : base(() => GetFixture(repeatCount, configureMembers))
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="repeatCount">count of a list/array</param>
+        /// <param name="recursionDepth">depht of an recursiv object</param>
+        /// <param name="configureMembers">Specifies whether members of a mock will be automatically setup to retrieve the return values from a fixture.</param>
+        public AutoMoqFixtureAttribute(int repeatCount = 3, int recursionDepth = 3, bool configureMembers = false)
+            : base(() => GetFixture(repeatCount, configureMembers, recursionDepth))
         { }
-
-        public AutoMoqFixtureAttribute(int repeatCount)
-            : base(() => GetFixture(repeatCount, false))
-        { }
-
-        public AutoMoqFixtureAttribute(bool configureMembers)
-            : base(() => GetFixture(3, configureMembers))
-        { }
-
-        private static Fixture GetFixture(int repeatCount, bool configureMembers)
+        
+        private static Fixture GetFixture(int repeatCount, bool configureMembers, int recursionDepth)
         {
             var fixture = new FixtureBuilder()
                 .CustomizeAutoMoq(configureMembers)
                 .CustomizeServiceProvider()
-                .RecursionDepth(3)
+                .RecursionDepth(recursionDepth)
                 .GetFixture();
 
             fixture.RepeatCount = repeatCount;

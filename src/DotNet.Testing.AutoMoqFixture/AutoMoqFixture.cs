@@ -10,21 +10,24 @@ namespace DotNet.Testing.AutoMoqFixture
         private ITestOutputHelper _logger;
 
 
-        public AutoMoqFixture(bool configureMembers=false)
+        public AutoMoqFixture(int repeatCount = 3, int recursionDepth = 3, bool configureMembers=false)
         {
-            AddCustomitation(configureMembers);
+            AddCustomitation(repeatCount, recursionDepth, configureMembers);
         }
 
-        public AutoMoqFixture(ITestOutputHelper logger, bool configureMembers = false) : this(configureMembers)
+        public AutoMoqFixture(ITestOutputHelper logger, int repeatCount = 3, int recursionDepth = 3, bool configureMembers = false) : this(repeatCount, recursionDepth, configureMembers)
         {
             _logger = logger;
         }
 
-        private void AddCustomitation(bool configureMembers)
+        private void AddCustomitation(int repeatCount, int recursionDepth, bool configureMembers)
         {
             new FixtureBuilder(this)
                 .CustomizeAutoMoq(configureMembers)
-                .CustomizeServiceProvider();
+                .CustomizeServiceProvider()
+                .RecursionDepth(recursionDepth);
+
+            RepeatCount = repeatCount;
         }
         
         public bool InjectLogger<T>()
