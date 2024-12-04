@@ -29,8 +29,8 @@ jobs:
         run: |
           TAG_VERSION=${GITHUB_REF#refs/tags/}  # Extract the tag version (e.g., 'v1.2.0')
           echo "Setting version to $TAG_VERSION"
-          sed -i "s|<Version>.*</Version>|<Version>${TAG_VERSION}</Version>|" ./DotNet.Testing.AutoMoqFixture.csproj
-
+          sed -i "s|<Version>.*</Version>|<Version>${TAG_VERSION}</Version>|" /home/runner/work/Testing/Testing/src/DotNet.Testing.AutoMoqFixture/DotNet.Testing.AutoMoqFixture.csproj
+      
       # Step 5: Build the project
       - name: Build the project
         run: dotnet build --configuration Release --no-restore
