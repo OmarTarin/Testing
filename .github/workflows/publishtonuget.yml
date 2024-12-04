@@ -13,20 +13,28 @@ jobs:
     steps:
       # Step 1: Checkout code
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
       # Step 2: Setup .NET SDK
       - name: Setup .NET
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 6.x # Change this to match your .NET version
+          dotnet-version: 8.x.x
 
-      # Step 3: Publish to NuGet on version change
-      - name: Publish on version change
-        id: publish_nuget
-        uses: rohith/publish-nuget@v2
-        with:
-          PROJECT_FILE_PATH: src/DotNet.Testing.AutoMoqFixture/DotNet.Testing.AutoMoqFixture.csproj
-          PACKAGE_NAME: AutoMoqFixture
-          TAG_COMMIT: true
-          NUGET_KEY: ${{ secrets.NUGET_API_KEY }}
+      # Step 3: Restore dependencies
+      - name: Restore dependencies
+        run: dotnet restore
+
+      # Step 4: Build the project
+      - name: Build the project
+        run: dotnet build --configuration Release --no-restore
+
+      # Step 5: Pack the NuGet package
+      - name: Pack the NuGet package
+        run: dotnet pack --configuration Release --no-build --output .
+
+      # Step 6: Publish the package to NuGet
+      - name: Publish to NuGet
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+        run: dotnet nuget push "*.nupkg" --source https://api.nuget.org/v3/index.json --api-key $NUGET_API_KEY --skip-duplicate
