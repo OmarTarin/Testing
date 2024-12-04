@@ -35,14 +35,6 @@ jobs:
       # Step 6: Clear NuGet cache
       - name: Clear NuGet cache
         run: dotnet nuget locals all --clear
-
-      - name: Check NuGet API Key
-        run: |
-          if [ -z "${{ secrets.NUGET_API_KEY }}" ]; then
-            echo "API Key is not set!"
-          else
-            echo "API Key is set!"
-          fi
   
       # Step 7: Publish to NuGet
       - name: Publish to NuGet
