@@ -1,6 +1,6 @@
 # UnitTest
 
-![publish to nuget](https://github.com/OmarTarin/Testing/workflows/publish%20to%20nuget/badge.svg?branch=master)
+[![Build, Test, and Publish to NuGet](https://github.com/OmarTarin/Testing/actions/workflows/publishtonuget.yml/badge.svg?branch=master)](https://github.com/OmarTarin/Testing/actions/workflows/publishtonuget.yml)
 
 > Helper Utility for testing purposes
 
