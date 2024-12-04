@@ -3,37 +3,30 @@ name: Build, Test, and Publish to NuGet
 on:
   push:
     branches:
-      - master # Default release branch
+      - master
 
 jobs:
   publish:
-    name: Build, Pack & Publish
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout code
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      # Step 2: Setup .NET SDK
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v1
+      - uses: actions/checkout@v2
+      - uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 8.x.x
 
-      # Step 3: Restore dependencies
       - name: Restore dependencies
         run: dotnet restore
 
-      # Step 4: Build the project
-      - name: Build the project
+      - name: Build
         run: dotnet build --configuration Release --no-restore
 
-      # Step 5: Pack the NuGet package
-      - name: Pack the NuGet package
+      - name: Pack
         run: dotnet pack --configuration Release --no-build --output .
 
-      # Step 6: Publish the package to NuGet
+      - name: Clear NuGet cache
+        run: dotnet nuget locals all --clear
+
       - name: Publish to NuGet
         env:
           NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
