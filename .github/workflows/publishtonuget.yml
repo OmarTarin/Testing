@@ -15,12 +15,16 @@ jobs:
         with:
           dotnet-version: 8.x.x
 
-      - name: publish on version change
-        id: publish_nuget
-        uses: rohith/publish-nuget@v2
-        with:
-          PROJECT_FILE_PATH: src/DotNet.Testing.AutoMoqFixture/DotNet.Testing.AutoMoqFixture.csproj
-          PACKAGE_NAME: AutoMoqFixture
-          TAG_COMMIT: true
-          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
-          NUGET_SOURCE: https://api.nuget.org/v3/index.json
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Pack
+        run: dotnet pack --configuration Release --no-build --output .
+
+      - name: Publish to NuGet
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+        run: dotnet nuget push "*.nupkg" --source https://api.nuget.org/v3/index.json --api-key $NUGET_API_KEY
