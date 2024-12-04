@@ -9,7 +9,7 @@ namespace TestImplementation
     public class AutoMoqFixtureAttributeTests
     {
 
-        [Theory, AutoMoqFixture(false)]
+        [Theory, AutoMoqFixture(configureMembers: false)]
         public void Resolve_ByDefault_FirstClass(FirstClass firstClass)
         {
             var result = firstClass.TriggerMethod();
@@ -22,7 +22,7 @@ namespace TestImplementation
             Assert.Null(firstClass.GetSecondClass.GetMyInterface.Model.MyString);
         }
 
-        [Theory, AutoMoqFixture(true)]
+        [Theory, AutoMoqFixture(configureMembers: true)]
         public void Resolve_ConfigureMember_FirstClass(FirstClass firstClass)
         {
             var result = firstClass.TriggerMethod();
@@ -43,7 +43,7 @@ namespace TestImplementation
             Assert.Equal(expectedRepeatCount, firstClass.StrArray.Length);
         }
 
-        [Theory, AutoMoqFixture(true)]
+        [Theory, AutoMoqFixture(configureMembers: true)]
         public void Resolve_ByTransient_SecondClass(SecondClass secondClass, FirstClass firstClass)
         {
             Assert.NotEqual(firstClass.GetSecondClass.GetMyInterface.Model.MyString, secondClass.GetMyInterface.Model.MyString);
@@ -52,7 +52,7 @@ namespace TestImplementation
         }
 
 
-        [Theory, AutoMoqFixture(true)]
+        [Theory, AutoMoqFixture(configureMembers: true)]
         public void Resolve_BySingle_SecondClass([Frozen]SecondClass secondClass, FirstClass firstClass)
         {
             Assert.Equal(firstClass.GetSecondClass.GetMyInterface.Model.MyString, secondClass.GetMyInterface.Model.MyString);

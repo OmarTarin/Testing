@@ -38,7 +38,7 @@ namespace TestImplementation
         [Fact]
         public void Resolve_ConfigureMember_FirstClass()
         {
-            var moq = new AutoMoqFixture(true);
+            var moq = new AutoMoqFixture(configureMembers: true);
             var firstClass = moq.Create<FirstClass>();
 
             var result = firstClass.TriggerMethod();
@@ -65,7 +65,7 @@ namespace TestImplementation
         [Fact]
         public void Resolve_WithLogging_FirstClass()
         {
-            var moq = new AutoMoqFixture(_logger, true);
+            var moq = new AutoMoqFixture(_logger, configureMembers: true);
             
             moq.InjectLogger<FirstClass>();
             moq.InjectLogger<SecondClass>();
@@ -86,7 +86,7 @@ namespace TestImplementation
         [Fact]
         public void Resolve_ByTransient_SecondClass()
         {
-            var moq = new AutoMoqFixture(_logger, true);
+            var moq = new AutoMoqFixture(_logger, configureMembers: true);
 
             moq.InjectLogger<FirstClass>();
             moq.InjectLogger<SecondClass>();
@@ -103,7 +103,7 @@ namespace TestImplementation
         [Fact]
         public void Resolve_BySingle_SecondClass()
         {
-            var moq = new AutoMoqFixture(_logger, true);
+            var moq = new AutoMoqFixture(_logger, configureMembers: true);
 
             moq.InjectLogger<FirstClass>();
             moq.InjectLogger<SecondClass>();
@@ -120,7 +120,7 @@ namespace TestImplementation
         [Fact]
         public void Resolve_ByTransient_IServiceProvider()
         {
-            var moq = new AutoMoqFixture(_logger, true);
+            var moq = new AutoMoqFixture(_logger, configureMembers: true);
 
             moq.InjectLogger<FirstClass>();
             moq.InjectLogger<SecondClass>();
@@ -138,7 +138,7 @@ namespace TestImplementation
         [Fact]
         public void Resolve_BySingle_IServiceProviders()
         {
-            var moq = new AutoMoqFixture(_logger, false);
+            var moq = new AutoMoqFixture(_logger, configureMembers: false);
 
             moq.InjectLogger<FirstClass>();
             moq.InjectLogger<SecondClass>();
@@ -188,7 +188,7 @@ namespace TestImplementation
         [Fact]
         public void Resolve_CreateScope_IServiceProviders()
         {
-            var moq = new AutoMoqFixture(_logger, true);
+            var moq = new AutoMoqFixture(_logger, configureMembers: true);
 
             moq.InjectLogger<FirstClass>();
             moq.InjectLogger<SecondClass>();
