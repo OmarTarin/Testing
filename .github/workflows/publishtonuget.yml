@@ -29,7 +29,7 @@ jobs:
         run: |
           TAG_VERSION=${GITHUB_REF#refs/tags/}  # Extract the tag version (e.g., 'v1.2.0')
           echo "Setting version to $TAG_VERSION"
-          sed -i "s|<Version>.*</Version>|<Version>${TAG_VERSION}</Version>|" YourProjectName.csproj
+          sed -i "s|<Version>.*</Version>|<Version>${TAG_VERSION}</Version>|" DotNet.Testing.AutoMoqFixture.csproj
 
       # Step 5: Build the project
       - name: Build the project
@@ -39,11 +39,7 @@ jobs:
       - name: Pack the NuGet package
         run: dotnet pack --configuration Release --no-build --output .
 
-      # Step 7: Clear NuGet cache
-      - name: Clear NuGet cache
-        run: dotnet nuget locals all --clear
-
-      # Step 8: Publish to NuGet
+      # Step 7: Publish to NuGet
       - name: Publish to NuGet
         env:
           NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
