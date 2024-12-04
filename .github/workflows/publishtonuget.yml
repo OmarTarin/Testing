@@ -3,7 +3,7 @@ name: Build, Test, and Publish to NuGet
 on:
   push:
     branches:
-      - master
+      - master  # Default release branch
 
 jobs:
   publish:
@@ -42,4 +42,4 @@ jobs:
           NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
         run: |
           echo "Pushing package to NuGet..."
-          dotnet nuget push "./AutoMoqFixture.1.2.0.nupkg" --source https://api.nuget.org/v3/index.json --api-key $NUGET_API_KEY --skip-duplicate --verbosity detailed
+          dotnet nuget push "./AutoMoqFixture.1.2.0.nupkg" --source https://api.nuget.org/v3/index.json --api-key $NUGET_API_KEY --skip-duplicate
